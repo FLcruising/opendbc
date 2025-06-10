@@ -2,7 +2,7 @@ def create_steering_control(packer, bus, apply_torque, lkas_enabled):
   values = {
     "LM_Offset": abs(apply_torque),
     "LM_OffSign": 1 if apply_torque < 0 else 0,
-    "HCA_Status": 5 if (lkas_enabled and apply_torque != 0) else 3,
+    "HCA_Status": 7 if (lkas_enabled and apply_torque != 0) else 3,
     "Vib_Freq": 16,
   }
 
@@ -94,7 +94,7 @@ def create_acc_accel_control(packer, bus, acc_type, acc_enabled, accel, acc_cont
 def create_acc_hud_control(packer, bus, acc_hud_status, set_speed, lead_distance, distance):
   values = {
     "ACA_StaACC": acc_hud_status,
-    "ACA_Zeitluecke": distance + 2,
+    "ACA_Zeitluecke": distance,
     "ACA_V_Wunsch": set_speed,
     "ACA_gemZeitl": lead_distance,
     "ACA_PrioDisp": 3,
